@@ -1,0 +1,13 @@
+;reformats MAC addresses. Press ALT+Shift+M
+!+m::
+Clipboard := StrReplace(Clipboard,"-","")
+Clipboard := StrReplace(Clipboard,":","")
+Clipboard := StrReplace(Clipboard,".","")
+sleep 10
+var1 := Clipboard 
+var2 := RegExReplace(Clipboard,"(?<!^.)(..)(?=[^$])","$1:")
+var3 := RegExReplace(Clipboard,"(?<!^.)(..)(?=[^$])","$1-")
+var4 := RegExReplace(Clipboard,"(?<!^.)(....)(?=[^$])","$1.")
+var5 = %var2%`n%var3%`n%var1%`n%var4%
+Clipboard := var5
+return
